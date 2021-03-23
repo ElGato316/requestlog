@@ -12,4 +12,14 @@
 			$this->load->view('users/view', $data);
 			$this->load->view('templates/footer');
 		}
+
+		public function add(){
+
+			$data['title'] = 'Add User';
+ 
+			$this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+			$this->load->view('users/add', $data);
+			$this->load->view('templates/footer');
+		}
     }

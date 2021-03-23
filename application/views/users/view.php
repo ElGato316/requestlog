@@ -1,6 +1,6 @@
 
 
-<h2 class="text-center">All Users</h2>
+<h2 class="text-center"><?php echo $title; ?></h2>
 
     <div id="content" class="container p-4" style="width: 800px;">
         <table class="table table-striped" id="users">
@@ -9,8 +9,9 @@
                 <th scope="col">Last Name</th>
                 <th scope="col">First Name</th>
                 <th scope="col">ID</th>
-                <th scope="col">Role</th>
+                <th scope="col">Supervisor</th>
                 <th scope="col">Active</th>
+                <th scope="col">Role</th>
             </thead>
             <tbody id="users-body"> 
                 <?php foreach($users as $user) : ?>
@@ -21,6 +22,7 @@
                     <td><?php echo $user['badge']; ?></td>
                     <td><?php echo $user['supervisor']; ?></td>
                     <td><?php echo $user['active']; ?></td>
+                    <td><?php echo $user['role']; ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

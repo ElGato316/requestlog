@@ -3,9 +3,8 @@
 
         public function get_all_active_users(){
 
-            $this->db->order_by('lastname');
-            $query = $this->db->get_where('users', array('active' => 1));
-
+            $sql = "select * from users where active = 1 order by role, lastname";
+            $query = $this->db->query($sql);
             return $query->result_array();
         }
         
