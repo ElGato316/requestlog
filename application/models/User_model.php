@@ -10,7 +10,14 @@
 
         public function get_all_active_users(){
 
-            $sql = "select * from users where active = 1 order by role, lastname";
+            $sql = "select id, concat(lastname, ', ', firstname) as name from users where active = 1 order by role, lastname";
+            $query = $this->db->query($sql);
+            return $query->result_array();
+        }
+
+        public function get_all_users(){
+
+            $sql = "select * from users order by role, lastname";
             $query = $this->db->query($sql);
             return $query->result_array();
         }

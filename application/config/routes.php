@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $router['users/view'] = 'users/view';
 $router['users/add'] = 'users/add';
 
+$router['requests/add'] = 'requests/add';
+
 $route['default_controller'] = 'login/view';
 
 

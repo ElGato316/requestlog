@@ -8,16 +8,18 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/add">Add User</a></li>
-            <!--<li><a class="dropdown-item" href="#">Add User</a></li>-->
+            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/view">All Users</a></li>
+
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Requests
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Add User</a></li>
-            <li><a class="dropdown-item" href="#">Add User</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">Add Requet</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">All Open Requests</a></li>
+            <li><a class="dropdown-item" href="#">Search Requests</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -25,8 +27,8 @@
             Reports
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Add User</a></li>
-            <li><a class="dropdown-item" href="#">Add User</a></li>
+            <li><a class="dropdown-item" href="#">Chief's Weekly</a></li>
+            <li><a class="dropdown-item" href="#">PRS Monthly</a></li>
           </ul>
         </li>
       </ul>

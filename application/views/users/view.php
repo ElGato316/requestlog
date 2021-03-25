@@ -2,6 +2,17 @@
 
 <h2 class="text-center"><?php echo $title; ?></h2>
 
+    <div class="container" id="flashdata">
+      <!-- Flash messages -->
+      <?php if($this->session->flashdata('user_entered')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_entered').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('user_updated')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_updated').'</p>'; ?>
+      <?php endif; ?>
+    </div>
+
     <div id="content" class="container p-4" style="width: 800px;">
         <table class="table table-striped" id="users">
             <thead>
@@ -40,3 +51,12 @@
             });
         });
     </script>
+
+<!--     <script>
+        $("document").ready(function(){
+            setTimeout(function(){
+                $('#flashdata').remove();
+            }, 5000 ); // 5 secs
+
+        });
+    </script> -->

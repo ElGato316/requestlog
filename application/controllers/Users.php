@@ -5,7 +5,7 @@
 
 			$data['title'] = 'All Users';
 
-			$data['users'] = $this->User_model->get_all_active_users();
+			$data['users'] = $this->User_model->get_all_users();
  
 			$this->load->view('templates/header');
             $this->load->view('templates/navbar');
@@ -34,7 +34,7 @@
 				$this->User_model->add_user($enc_password);
 
 				// Set message
-				$this->session->set_flashdata('user_entered', 'User has been added');
+				$this->session->set_flashdata('user_entered', 'User '.$this->input->post('username').' has been added.', 20);
 
 				redirect('users/view');
 			}
@@ -55,6 +55,10 @@
 
 		public function update(){
 			$this->User_model->edit_user($id);
+
+			// Set message
+			$this->session->set_flashdata('user_updated', 'User '.$this->input->post('username').' has been updated.', 20);
+
 			redirect('users/view');
 		}
     }
