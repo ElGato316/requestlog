@@ -8,7 +8,7 @@
                 <th scope="col">Edit</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">First Name</th>
-                <th scope="col">ID</th>
+                <th scope="col">Username</th>
                 <th scope="col">Supervisor</th>
                 <th scope="col">Active</th>
                 <th scope="col">Role</th>
@@ -16,10 +16,10 @@
             <tbody id="users-body"> 
                 <?php foreach($users as $user) : ?>
                 <tr>
-                    <td>Edit</td>
+                    <td><a href="<?php echo base_url(); ?>users/edit/<?php echo $user['id'] ?>">Edit</a></td>
                     <td><?php echo $user['lastname']; ?></td>
                     <td><?php echo $user['firstname']; ?></td>
-                    <td><?php echo $user['badge']; ?></td>
+                    <td><?php echo $user['username']; ?></td>
                     <td><?php echo $user['supervisor']; ?></td>
                     <td><?php echo $user['active']; ?></td>
                     <td><?php echo $user['role']; ?></td>

@@ -1,4 +1,4 @@
 
 
-<h2>Login Page</h2>
+<h2 class="text-center">Login Page</h2>
 

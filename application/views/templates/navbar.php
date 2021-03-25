@@ -8,7 +8,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/add">Add User</a></li>
-            <li><a class="dropdown-item" href="#">Add User</a></li>
+            <!--<li><a class="dropdown-item" href="#">Add User</a></li>-->
           </ul>
         </li>
         <li class="nav-item dropdown">
