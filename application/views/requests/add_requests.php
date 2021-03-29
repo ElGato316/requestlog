@@ -3,7 +3,7 @@
 <h2 class="text-center"><?php echo $title; ?></h2>
 
 <div id="content" class="container border p-4" style="width: 800px;">
-        <form action="" class="">
+        <?php echo form_open('requests/add'); ?>
             <div class="form-group row">
                 <div class="col">
                     <label for="date-received" class="">Date Received:</label>
@@ -11,7 +11,7 @@
                 </div><!-- Date Received Field -->
                 <div class="col">
                     <label for="date-assigned" class="">Date Assigned:</label>
-                    <input type="date" class="form-control" name="date-assigned">
+                    <input type="date" class="form-control" name="date-assigned" value="<?php echo date("Y-m-d"); ?>">
                 </div><!-- Date Assigned Field -->
                 <div class="col">
                     <label for="govqa" class="">GovQA #:</label>
@@ -19,13 +19,13 @@
                 </div><!-- GovQA # Field -->
                 <div class="col">
                     <label for="pdcase" class="">PD Case #:</label>
-                    <input type="text" class="form-control" name="pdcase" maxlength="14">
+                    <input type="text" class="form-control" name="pd_case" maxlength="14">
                 </div><!-- PD Case # Field -->
             </div><!--Top Row-->
             <div class="form-group row">
                 <div class="col-4">
                     <label for="agency" class="">Agency:</label><br />
-                    <select name="agency" id="agency" style="width: 220px;">
+                    <select name="agency_id" id="agency" style="width: 220px;">
                         <?php foreach($agencies as $agency) : ?>
                             <option value="<?php echo $agency['id']; ?>" class="form-control"><?php echo $agency['agency']; ?></option>
                         <?php endforeach; ?>
@@ -33,11 +33,11 @@
                 </div><!-- Agency Field --> 
                 <div class="col-4">
                     <label for="agency-contact" class="">Agency Contact:</label>
-                    <input type="text" class="form-control" name="agency-contact">
+                    <input type="text" class="form-control" name="agency_agent">
                 </div><!-- Agency Contact Field -->
                 <div class="col-4">
                     <label for="prs" class="">PRS:</label><br />
-                    <select name="prs" id="prs" style="width: 220px;">
+                    <select name="user_id" id="prs" style="width: 220px;">
                         <?php foreach($users as $user) : ?>
                             <option value="<?php echo $user['id']; ?>" class="form-control"><?php echo $user['name']; ?></option>
                         <?php endforeach; ?>
@@ -51,7 +51,7 @@
                 </div><!-- Comments Field -->
             </div><!--Thrid Row-->    
             <div class="form-group">
-                <button type="button" class="btn btn-primary">Add Request</button>
+                <button type="submit" class="btn btn-primary">Add Request</button>
             </div><!-- Submit Button -->
         </form><!-- Add User Form -->
     </div><!-- Body of Document -->

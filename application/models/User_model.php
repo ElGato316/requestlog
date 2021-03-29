@@ -45,16 +45,31 @@
 
         public function edit_user($id){
 
-            $data = array(
-                //'id' => $this->input->post('id'),
-                'firstname' => $this->input->post('firstname'),
-                'lastname' => $this->input->post('lastname'),
-                'username' => $this->input->post('username'),
-                'password' => $this->input->post('password'),
-                'active' => $this->input->post('active'),
-                'supervisor' => $this->input->post('supervisor'),
-                'role' => $this->input->post('role')
-            );
+            if (!empty($this->input->post('password'))) {
+
+                $enc_password = md5($this->input->post('password'));
+
+                $data = array(
+                    //'id' => $this->input->post('id'),
+                    'firstname' => $this->input->post('firstname'),
+                    'lastname' => $this->input->post('lastname'),
+                    'username' => $this->input->post('username'),
+                    'password' => $enc_password,
+                    'active' => $this->input->post('active'),
+                    'supervisor' => $this->input->post('supervisor'),
+                    'role' => $this->input->post('role')
+                );
+            } else {
+                $data = array(
+                    //'id' => $this->input->post('id'),
+                    'firstname' => $this->input->post('firstname'),
+                    'lastname' => $this->input->post('lastname'),
+                    'username' => $this->input->post('username'),
+                    'active' => $this->input->post('active'),
+                    'supervisor' => $this->input->post('supervisor'),
+                    'role' => $this->input->post('role')
+                );
+            }
 
             $this->db->where('id', $this->input->post('id'));
 			return $this->db->update('users', $data);

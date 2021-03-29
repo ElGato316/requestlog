@@ -23,7 +23,7 @@
             </div><!-- badge Field -->
             <div class="form-group">
                 <label for="password" class="">Password:</label>
-                <input type="text" class="form-control" name="password" value="<?php echo $user['password']; ?>">
+                <input type="text" class="form-control" name="password" value="">
             </div><!-- Password Field -->
             <div class="form-group p-2 mt-2 row">
                 <label for="active" class="col-sm-3">Active:</label>
