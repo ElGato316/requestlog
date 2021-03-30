@@ -36,10 +36,52 @@
             return $query->result_array();
         }
 
+        public function get_all_open_requests(){
+            $sql = "select r.id, r.date_received, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+                    from requests as r
+                        join users as u on r.user_id = u.id
+                        join status as s on r.status = s.id
+                        join agency as a on r.agency_id = a.id
+                    where r.date_completed is null
+                    order by r.date_received;";
+            $query = $this->db->query($sql);
+            return $query->result_array();
+        }
+
+        public function get_all_requests(){
+            $sql = "select r.id, r.date_received, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+                    from requests as r
+                        join users as u on r.user_id = u.id
+                        join status as s on r.status = s.id
+                        join agency as a on r.agency_id = a.id
+                    order by r.date_received;";
+            $query = $this->db->query($sql);
+            return $query->result_array();
+        }
+
+        public function search_requests($input){
+            $sql = "select r.id, r.date_received, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+                    from requests as r
+                        join users as u on r.user_id = u.id
+                        join status as s on r.status = s.id
+                        join agency as a on r.agency_id = a.id
+                    where r.govqa like '%".$input."%'
+                            or s.status like '%".$input."%'
+                            or r.pd_case like '%".$input."%'
+                            or r.agency_agent like '%".$input."%'
+                            or a.agency_name like '%".$input."%'
+                            or r.comments like '%".$input."%'
+                            or u.lastname like '%".$input."%'
+                            or u.firstname like '%".$input."%'
+                    order by r.date_received;";
+            $query = $this->db->query($sql);
+            return $query->result_array();
+        }
+
         public function add_request(){
 
             $data = array(
-                'date_received' => $this->input->post('date-received'),
+                'date_received' => $this->input->post('date_received'),
                 'govqa' => $this->input->post('govqa'),
                 'pd_case' => $this->input->post('pd_case'),
                 'agency_id' => $this->input->post('agency_id'),

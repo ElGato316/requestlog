@@ -1,5 +1,9 @@
 
 
+      <?php if($this->session->flashdata('request_added')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('request_added').'</p>'; ?>
+      <?php endif; ?>
+
 <h2 class="text-center"><?php echo $title; ?></h2>
 
 <div id="content" class="container border p-4" style="width: 1000px;">
@@ -7,7 +11,7 @@
             <div class="form-group row">
                 <div class="col">
                     <label for="date-received" class="">Date Received:</label>
-                    <input type="date" class="form-control" name="date-received">
+                    <input type="date" class="form-control" name="date_received">
                 </div><!-- Date Received Field -->
                 <div class="col">
                     <label for="govqa" class="">GovQA #:</label>
@@ -53,7 +57,7 @@
             <div class="form-group row">
                 <div class="col">
                     <label for="comments" class="">Comments:</label>
-                    <textarea name="comments" id="comments" cols="77" rows="10" style="vertical-align: top;"></textarea>
+                    <textarea name="comments" id="comments" cols="100" rows="5" style="vertical-align: top;"></textarea>
                 </div><!-- Comments Field -->
             </div><!--Fourth Row-->    
             <div class="form-group">

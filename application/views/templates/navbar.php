@@ -18,8 +18,9 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">Add Request</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">All Open Requests</a></li>
-            <li><a class="dropdown-item" href="#">Search Requests</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view">All Open Requests</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search">Search Requests</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search">Search Requests By PRS</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

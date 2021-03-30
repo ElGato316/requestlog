@@ -5,6 +5,7 @@ $router['users/view'] = 'users/view';
 $router['users/add'] = 'users/add';
 
 $router['requests/add'] = 'requests/add';
+$router['requests/view'] = 'requests/view';
 
 $route['default_controller'] = 'login/view';
 

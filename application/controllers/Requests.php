@@ -3,7 +3,7 @@
 
         public function add(){
 
-            $data['title'] = "Enter Request";
+            $data['title'] = "Add Request";
 
 
             if ($this->input->server('REQUEST_METHOD') === 'GET'){
@@ -17,7 +17,7 @@
                 $data['opened'] = $this->Request_model->get_prs_open_requests();
 
                 $data['requests'] = $this->Request_model->get_last_eight_request_entered();
-                
+
                 $this->load->view('templates/header');
                 $this->load->view('templates/navbar');
                 $this->load->view('requests/add_requests', $data);
@@ -29,10 +29,46 @@
 
 
                 // Set message
-				$this->session->set_flashdata('request_entered', 'Request Added');
+				$this->session->set_flashdata('request_added', 'Request Added');
 
                 redirect('requests/add');
             }
             
+        }
+
+        public function view(){
+            $data['title'] = "All Open Records";
+
+            $data['requests'] = $this->Request_model->get_all_open_requests();
+            //$data['requests'] = $this->Request_model->get_all_requests();
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('requests/rms_view', $data);
+            $this->load->view('templates/footer');
+        }
+
+        public function search(){
+            $data['title'] = "Request Search";
+
+            if ($this->input->server('REQUEST_METHOD') === 'GET') {
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('requests/search_requests', $data);
+                $this->load->view('templates/footer');
+            } else {
+
+                $input = $this->input->post('input');
+
+                $data['requests'] = $this->Request_model->search_requests($input);
+
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('requests/search_requests', $data);
+                $this->load->view('templates/footer');
+            }
+            
+
+
         }
     }
