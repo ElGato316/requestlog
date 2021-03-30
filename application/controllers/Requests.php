@@ -12,6 +12,12 @@
 
                 $data['agencies'] = $this->Request_model->get_agencies();
 
+                $data['statuses'] = $this->Request_model->get_statuses();
+
+                $data['opened'] = $this->Request_model->get_prs_open_requests();
+
+                $data['requests'] = $this->Request_model->get_last_eight_request_entered();
+                
                 $this->load->view('templates/header');
                 $this->load->view('templates/navbar');
                 $this->load->view('requests/add_requests', $data);
