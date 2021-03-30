@@ -80,6 +80,12 @@
 
         public function add_request(){
 
+            if(!$this->input->post('invoice_needed')){
+                $checked = 0;
+            }else{
+                $checked = 1;
+            }
+
             $data = array(
                 'date_received' => $this->input->post('date_received'),
                 'govqa' => $this->input->post('govqa'),
@@ -88,10 +94,58 @@
                 'agency_agent' => $this->input->post('agency_agent'),
                 'user_id' => $this->input->post('user_id'),
                 'status' => $this->input->post('status'),
+                'invoice_needed' => $checked,
+                'number_of_videos' => $this->input->post('number_of_videos'),
                 'comments' => $this->input->post('comments')
             );
 
             return $this->db->insert('requests', $data);
+        }
+
+        public function get_request($id){
+            $sql = "select * from requests where id = ?";
+            $query = $this->db->query($sql, $id);
+            return $query->row_array();
+
+        }
+
+        public function edit_request($id){
+
+            $data = array(
+                //Dates
+                'date_received' => $this->input->post('date_received'),
+                'date_assigned' => $this->input->post('date_assigned'),
+                'date_completed' => $this->input->post('date_completed'),
+                'date_invoiced' => $this->input->post('date_invoiced'),
+                'date_paid' => $this->input->post('date_paid'),
+                'date_notified' => $this->input->post('date_notified'),
+
+                //Checkboxes(yes/no)
+                'completed_by_other_user' => $this->input->post('completed_by_other_user'),
+                'invoice_sent' => $this->input->post('invoice_sent'),
+                'payment_received' => $this->input->post('payment_received'),
+                'invoice_needed' => $this->input->post('invoice_needed'),
+                'officer_notified' => $this->input->post('officer_notified'),
+                
+                //Dropdown Boxes
+                'status' => $this->input->post('status'),
+                'agency_id' => $this->input->post('agency_id'),
+                'user_id' => $this->input->post('user_id'),
+                'other_user_id' => $this->input->post('other_user_id'),
+
+                //Textboxes
+                'govqa' => $this->input->post('govqa'),
+                'pd_case' => $this->input->post('pd_case'),
+                'agency_agent' => $this->input->post('agency_agent'),
+                'videos_redacted' => $this->input->post('videos_redacted'),
+                'hours_reviewed' => $this->input->post('hours_reviewed'),
+                'number_of_videos' => $this->input->post('number_of_videos'),
+                'activity_number' => $this->input->post('activity_number'),
+                
+                //TextArea
+                'comments' => $this->input->post('comments')
+            );
+
         }
 
     }

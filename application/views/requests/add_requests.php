@@ -53,6 +53,14 @@
                         <?php endforeach; ?>
                     </select>
                 </div><!-- Status Field -->
+                <div class="col form-group form-inline">
+                    <label for="status" class="">Invoice Needed:</label>
+                    <input type="checkbox" name="invoice_needed" value="1" class="form-control ml-3">
+                </div><!-- Invoice Check -->
+                <div class="col form-group form-inline">
+                    <label for="status" class="block">Number of Videos:</label>
+                    <input type="text" name="number_of_videos" id="" class="form-control ml-3" size="2">
+                </div><!--Number of Videos -->
             </div><!--Thrid Row--> 
             <div class="form-group row">
                 <div class="col">
