@@ -9,7 +9,7 @@
         <label for="date-received" class="col-form-label">Search For:</label>
     </div>
     <div class="col col-md-8">
-        <input type="text" class="form-control" name="input">
+        <input type="text" class="form-control" name="input" required="true">
     </div><!-- Date Received Field -->
     <div class="col col-md-2">
         <button type="submit" class="btn btn-primary">Search</button>

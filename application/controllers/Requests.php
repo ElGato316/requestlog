@@ -72,7 +72,15 @@
 
         }
 
-        public function edit($id){
+        public function edit(){
+
+            $data['title'] = "Edit Record";
+
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('requests/rms_edit_request', $data);
+            $this->load->view('templates/footer');
 
         }
     }

@@ -1,6 +1,6 @@
 
 
-</div><!-- Body of Document -->
+</div><!-- Body Container of Document -->
     <div id="footer">
 
 
