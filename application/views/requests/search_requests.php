@@ -38,7 +38,7 @@
                     <tbody id="users-body"> 
                     <?php foreach($requests as $request): ?>
                         <tr>
-                            <td>Edit</td>
+                        <td><a href="<?php echo base_url(); ?>requests/edit/<?php echo $request['id']; ?>">Edit</a></td>
                             <td><?php echo $request['date_received']; ?></td>
                             <td><?php echo $request['agency_name']; ?></td>
                             <td><?php echo $request['govqa']; ?></td>

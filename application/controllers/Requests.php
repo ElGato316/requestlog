@@ -40,7 +40,6 @@
             $data['title'] = "All Open Records";
 
             $data['requests'] = $this->Request_model->get_all_open_requests();
-            //$data['requests'] = $this->Request_model->get_all_requests();
 
             $this->load->view('templates/header');
             $this->load->view('templates/navbar');
@@ -72,10 +71,18 @@
 
         }
 
-        public function edit(){
+        public function edit($id){
 
             $data['title'] = "Edit Record";
 
+            $data['request'] = $this->Request_model->get_request($id);
+
+            $data['users'] = $this->User_model->get_all_active_users();
+
+            $data['statuses'] = $this->Request_model->get_statuses();
+
+            $data['agencies'] = $this->Request_model->get_agencies();
+ 
 
             $this->load->view('templates/header');
             $this->load->view('templates/navbar');
@@ -83,4 +90,19 @@
             $this->load->view('templates/footer');
 
         }
+
+        public function update(){
+
+			$this->Request_model->edit_request($id);
+
+			// Set message
+			$this->session->set_flashdata('request_updated', 'The request has been updated.', 20);
+
+            //$str = $this->db->last_query();
+            //echo "<pre>";
+            //print_r($str);
+            //exit;
+
+			redirect('requests/view');
+		}
     }

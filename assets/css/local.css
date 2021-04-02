@@ -4,9 +4,14 @@ fieldset {
     border-radius: 8px;
   }
 
-  legend {
+legend {
     background-color: #596CBA;
     color: white;
     padding: 5px 10px;
     border-radius: 8px;
+  }
+
+  hr{
+    height: 1px;
+    background-color: #333;
   }
