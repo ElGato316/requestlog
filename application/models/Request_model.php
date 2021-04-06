@@ -94,7 +94,7 @@
                 'agency_id' => $this->input->post('agency_id'),
                 'agency_agent' => $this->input->post('agency_agent'),
                 'user_id' => $this->input->post('user_id'),
-                'status' => $this->input->post('status'),
+                'status_id' => $this->input->post('status'),
                 'invoice_needed' => $checked,
                 'number_of_videos' => $this->input->post('number_of_videos'),
                 'comments' => $this->input->post('comments')
@@ -237,5 +237,20 @@
             redirect('request/view');
 
         }
+
+        public function search_requests_by_user($id){
+            
+            $sql = "select r.id, r.date_received, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+            from requests as r
+                join users as u on r.user_id = u.id
+                join status as s on r.status_id = s.id
+                join agency as a on r.agency_id = a.id
+            where r.user_id = ".$id."
+            order by r.date_received;";
+
+            $query = $this->db->query($sql);
+            return $query->result_array();
+        }
+
 
     }

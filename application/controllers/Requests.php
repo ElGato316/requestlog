@@ -66,9 +66,30 @@
                 $this->load->view('requests/search_requests', $data);
                 $this->load->view('templates/footer');
             }
-            
 
+        }
 
+        public function search_user(){
+            $data['title'] = "Search Request By User";
+
+            $data['users'] = $this->User_model->get_all_active_users();
+
+            if ($this->input->server('REQUEST_METHOD') === 'GET') {
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('requests/search_requests_user', $data);
+                $this->load->view('templates/footer');
+            } else {
+
+                $input = $this->input->post('input');
+
+                $data['requests'] = $this->Request_model->search_requests_by_user($input);
+
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('requests/search_requests_user', $data);
+                $this->load->view('templates/footer');
+            }
         }
 
         public function edit($id){

@@ -27,7 +27,7 @@
                             <td><?php echo $request['pd_case']; ?></td>
                             <td><?php echo $request['name']; ?></td>
                             <td><?php echo $request['status']; ?></td>
-                            <td><?php echo $request['comments']; ?></td>
+                            <td class="container"><div><?php echo $request['comments']; ?></div></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

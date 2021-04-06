@@ -138,26 +138,4 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    
-    <script>
-		function setNotifiedDate(){
-			//get the checkbox
-			var checkBox = document.getElementById("notified");
-			//get notified date text box
-			var notfied_date = document.getElementById("notified_date");
-			var todaydate = new Date();
-			var month = ("0" + (todaydate.getMonth() + 1)).slice(-2);
-			var day = ("0" + todaydate.getDate()).slice(-2);
-			var year = todaydate.getFullYear();
-			//var datestring = month + "/" + day + "/" +year;
-			var datestring = year + "-" + month + "-" + day;
-			
-			//logic
-			if (checkBox.checked == true){
-				notified_date.value = datestring;
-				//window.alert(datestring);
-			}else{
-				notified_date.value = "";
-			}
-		}
-    </script>
+    <script src="<?php echo base_url(); ?>assets/js/local.js"></script>

@@ -2,20 +2,24 @@
 
 <h2 class="text-center"><?php echo $title; ?></h2>
 
-<?php echo form_open('requests/search'); ?>
+<?php echo form_open('requests/search_user'); ?>
 
-<div class="form-group row">
-    <div class="col col-md-2">
+<div class="form-group row mx-auto">
+<div class="col col-md-4">
+</div>
+    <div class="col col-md-4">
         <label for="date-received" class="col-form-label">Search For:</label>
-    </div>
-    <div class="col col-md-8">
-        <input type="text" class="form-control" name="input" required="true">
-    </div><!-- Date Received Field -->
-    <div class="col col-md-2">
+        <select class="form-select" name="input">
+            <option value="">Select A PRS:</option>
+            <?php foreach($users as $user): ?>
+            <option value="<?php echo $user['id']; ?>"><?php echo $user['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
         <button type="submit" class="btn btn-primary">Search</button>
     </div><!-- Date Received Field -->
+<div class="col col-md-4">
+</div>
 </div><!--Top Row-->
-
 <?php echo form_close(); ?>
 
 <?php if (!isset($requests)) { ?>
@@ -37,7 +41,7 @@
                     </thead>
                     <tbody id="users-body"> 
                     <?php foreach($requests as $request): ?>
-                        <tr>
+                        <tr class="" id="">
                         <td><a href="<?php echo base_url(); ?>requests/edit/<?php echo $request['id']; ?>">Edit</a></td>
                             <td><?php echo $request['date_received']; ?></td>
                             <td><?php echo $request['agency_name']; ?></td>
@@ -45,7 +49,7 @@
                             <td><?php echo $request['pd_case']; ?></td>
                             <td><?php echo $request['name']; ?></td>
                             <td><?php echo $request['status']; ?></td>
-                            <td class="continer"><div><?php echo $request['comments']; ?></div></td>
+                            <td class="container"><div><?php echo $request['comments']; ?></div></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
@@ -62,4 +66,4 @@
             $('#search_requests').DataTable();
             $('.dataTables_length').addClass('bs-select');
         });
-    </script>
+</script>
