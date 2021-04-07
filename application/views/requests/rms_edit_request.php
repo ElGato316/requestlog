@@ -77,9 +77,12 @@
 				<input type="text" class="form-control" name="hours_reviewed" value="<?php echo $request['hours_reviewed']; ?>" style="width: 100px;">
 			</div>
 		</div>
-		<div class="row pt-3 mx-auto">
-			<div class="col form-check pt-4 mx-auto">
-				<label class = "checkbox-inline"><input type="checkbox" value="1" <?php echo ($request['invoice_needed']==1 ? 'checked' : ''); ?> id="invoice_needed" name="invoice_needed"> Invoice Needed</label>
+		<div class="row pt-3">
+			<div class="col col-md-1">
+				<!-- Spacing -->
+			</div>
+			<div class="col pt-4 mx-auto">
+				<label class = "form-check-label pl-5"><input type="checkbox" class="form-check-input" value="1" <?php echo ($request['invoice_needed']==1 ? 'checked' : ''); ?> id="invoice_needed" name="invoice_needed">Invoice Needed</label>
 			</div>
 			<div class="col">
 				<label class="form-label">Date Invoiced:</label>

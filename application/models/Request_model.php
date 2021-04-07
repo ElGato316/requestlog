@@ -60,7 +60,7 @@
         }
 
         public function search_requests($input){
-            $sql = "select r.id, r.date_received, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+            $sql = "select r.id, r.date_received, r.date_completed, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
                     from requests as r
                         join users as u on r.user_id = u.id
                         join status as s on r.status_id = s.id
@@ -240,16 +240,40 @@
 
         public function search_requests_by_user($id){
             
-            $sql = "select r.id, r.date_received, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+            $sql = "select r.id, r.date_received, r.date_completed, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
             from requests as r
                 join users as u on r.user_id = u.id
                 join status as s on r.status_id = s.id
                 join agency as a on r.agency_id = a.id
             where r.user_id = ".$id."
-            order by r.date_received;";
+            order by r.date_received desc
+            limit 2000";
 
             $query = $this->db->query($sql);
             return $query->result_array();
+        }
+
+        public function get_pending_invoices(){
+
+            $sql = "select r.id, r.date_received, r.date_completed, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+                    from requests as r
+                        join users as u on r.user_id = u.id
+                        join status as s on r.status_id = s.id
+                        join agency as a on r.agency_id = a.id
+                    where r.invoice_needed = 1 
+                            and r.date_invoiced is null 
+                            and r.date_completed is null 
+                            and s.id NOT IN (1,3,5,12)
+                            or r.date_invoiced = '0000-00-00' 
+                    order by r.date_received;";
+
+            $query = $this->db->query($sql);
+            return $query->result_array();
+
+        }
+
+        public function get_paid_open(){
+
         }
 
 

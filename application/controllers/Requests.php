@@ -126,4 +126,15 @@
 
 			redirect('requests/view');
 		}
+
+        public function view_pending_invoices(){
+
+            $data['title'] = "Requests Pending Invoice";
+
+            $data['requests'] = $this->Request_model->get_pending_invoices();
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('requests/rms_view_pending_invoice', $data);
+            $this->load->view('templates/footer');
+        }
     }

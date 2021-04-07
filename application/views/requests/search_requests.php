@@ -28,6 +28,7 @@
                     <thead>
                         <th scope="col">Edit</th>
                         <th scope="col">Date Received</th>
+                        <th scope="col">Date Completed</th>
                         <th scope="col">Agency</th>
                         <th scope="col">GovQA #</th>
                         <th scope="col">PD Case #</th>
@@ -40,6 +41,7 @@
                         <tr>
                         <td><a href="<?php echo base_url(); ?>requests/edit/<?php echo $request['id']; ?>">Edit</a></td>
                             <td><?php echo $request['date_received']; ?></td>
+                            <td><?php echo $request['date_completed']; ?></td>
                             <td><?php echo $request['agency_name']; ?></td>
                             <td><?php echo $request['govqa']; ?></td>
                             <td><?php echo $request['pd_case']; ?></td>
