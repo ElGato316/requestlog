@@ -58,3 +58,6 @@
             </fieldset>
         </form><!-- Add User Form -->
 </div>
+<div>
+    <img src="<?php echo base_url(); ?>assets/images/computer.jpg" alt="test pic" height="250" width="250" />
+</div>
