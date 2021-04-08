@@ -247,7 +247,7 @@
                 join agency as a on r.agency_id = a.id
             where r.user_id = ".$id."
             order by r.date_received desc
-            limit 2000";
+            limit 2000;";
 
             $query = $this->db->query($sql);
             return $query->result_array();
@@ -272,7 +272,20 @@
 
         }
 
-        public function get_paid_open(){
+        public function search_requests_by_status($status_id){
+
+            //$status_id = 5;
+
+            $sql = "select r.id, r.date_received, r.date_completed, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+            from requests as r
+                join users as u on r.user_id = u.id
+                join status as s on r.status_id = s.id
+                join agency as a on r.agency_id = a.id
+            where r.status_id = ".$status_id."
+            order by r.date_received desc";
+
+            $query = $this->db->query($sql);
+            return $query->result_array();
 
         }
 

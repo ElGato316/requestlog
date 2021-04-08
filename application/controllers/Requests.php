@@ -70,7 +70,7 @@
         }
 
         public function search_user(){
-            $data['title'] = "Search Request By User";
+            $data['title'] = "Search Requests By User";
 
             $data['users'] = $this->User_model->get_all_active_users();
 
@@ -136,5 +136,29 @@
             $this->load->view('templates/navbar');
             $this->load->view('requests/rms_view_pending_invoice', $data);
             $this->load->view('templates/footer');
+        }
+
+        public function search_by_status(){
+
+            $data['title'] = "Search Requests By Status";
+
+            $data['statuses'] = $this->Request_model->get_statuses();
+
+            if ($this->input->server('REQUEST_METHOD') === 'GET') {
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('requests/search_requests_by_status', $data);
+                $this->load->view('templates/footer');
+            } else {
+
+                $status_id = $this->input->post('status_id');
+
+                $data['requests'] = $this->Request_model->search_requests_by_status($status_id);
+
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('requests/search_requests_by_status', $data);
+                $this->load->view('templates/footer');
+            }
         }
     }

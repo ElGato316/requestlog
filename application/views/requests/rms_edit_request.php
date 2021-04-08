@@ -103,7 +103,7 @@
 		</div>
 		<div class="row pt-3 p-3">
 			<div class="col col-md-5 form-check border border-primary rounded p-3">
-				<label class = "checkbox-inline"><input type="checkbox" value="1" name="officer_notified" id="notified" onclick="setNotifiedDate()" <?php echo ($request['officer_notified']==1 ? 'checked' : ''); ?>> Need To Notify Officer</label>
+				<label class = "checkbox-inline"><input type="checkbox" value="1" name="officer_notified" id="notified" onclick="<?php echo (is_null($request['date_notified'])) ? 'setNotifiedDate()' : ''; ?>" <?php echo ($request['officer_notified']==1 ? 'checked' : ''); ?>> Need To Notify Officer</label>
 				</br>
 				<label class="form-label pt-3">Date Notified:</label>
                 <?php if (is_null($request['date_notified'])) { ?>
