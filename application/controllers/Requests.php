@@ -47,6 +47,41 @@
             $this->load->view('templates/footer');
         }
 
+        public function edit($id){
+
+            $data['title'] = "Edit Record";
+
+            $data['request'] = $this->Request_model->get_request($id);
+
+            $data['users'] = $this->User_model->get_all_active_users();
+
+            $data['statuses'] = $this->Request_model->get_statuses();
+
+            $data['agencies'] = $this->Request_model->get_agencies();
+ 
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('requests/rms_edit_request', $data);
+            $this->load->view('templates/footer');
+
+        }
+
+        public function update(){
+
+			$this->Request_model->edit_request($id);
+
+			// Set message
+			$this->session->set_flashdata('request_updated', 'The request has been updated.', 20);
+
+            //$str = $this->db->last_query();
+            //echo "<pre>";
+            //print_r($str);
+            //exit;
+
+			redirect('requests/view');
+		}
+
         public function search(){
             $data['title'] = "Request Search";
 
@@ -92,52 +127,6 @@
             }
         }
 
-        public function edit($id){
-
-            $data['title'] = "Edit Record";
-
-            $data['request'] = $this->Request_model->get_request($id);
-
-            $data['users'] = $this->User_model->get_all_active_users();
-
-            $data['statuses'] = $this->Request_model->get_statuses();
-
-            $data['agencies'] = $this->Request_model->get_agencies();
- 
-
-            $this->load->view('templates/header');
-            $this->load->view('templates/navbar');
-            $this->load->view('requests/rms_edit_request', $data);
-            $this->load->view('templates/footer');
-
-        }
-
-        public function update(){
-
-			$this->Request_model->edit_request($id);
-
-			// Set message
-			$this->session->set_flashdata('request_updated', 'The request has been updated.', 20);
-
-            //$str = $this->db->last_query();
-            //echo "<pre>";
-            //print_r($str);
-            //exit;
-
-			redirect('requests/view');
-		}
-
-        public function view_pending_invoices(){
-
-            $data['title'] = "Requests Pending Invoice";
-
-            $data['requests'] = $this->Request_model->get_pending_invoices();
-            $this->load->view('templates/header');
-            $this->load->view('templates/navbar');
-            $this->load->view('requests/rms_view_pending_invoice', $data);
-            $this->load->view('templates/footer');
-        }
-
         public function search_by_status(){
 
             $data['title'] = "Search Requests By Status";
@@ -160,5 +149,16 @@
                 $this->load->view('requests/search_requests_by_status', $data);
                 $this->load->view('templates/footer');
             }
+        }
+
+        public function view_pending_invoices(){
+
+            $data['title'] = "Requests Pending Invoice";
+
+            $data['requests'] = $this->Request_model->get_pending_invoices();
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('requests/rms_view_pending_invoice', $data);
+            $this->load->view('templates/footer');
         }
     }
