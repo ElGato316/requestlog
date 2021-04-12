@@ -1,8 +1,8 @@
 
 
-<h2 class="text-center"><?php echo $title; ?></h2>
+<h2 class="text-center mt-2"><?php echo $title; ?> For ...</h2>
 
-<?php echo form_open('requests/search'); ?>
+<?php echo form_open('PRS/search_requests'); ?>
 
 <div class="form-group row">
     <div class="col col-md-2">
@@ -21,6 +21,7 @@
 <?php if (!isset($requests)) { ?>
     <h3 class="text-center">No Results</h3>
 <?php } else { ?>
+    <div><h3>Search Results For: <?php echo $input; ?></h3></div>
     <div class="row mt-4">
             <div class="col-12 border border-primary rounded p-2">
                 <table class="table table-striped" id="search_requests">

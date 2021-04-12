@@ -36,6 +36,8 @@
                 $officer_notified = 0;
             }
 
+            $id = $this->input->post('id');
+
             $data = array(
                 //Dates
                 'date_received' => $this->input->post('date_received'),
@@ -46,7 +48,7 @@
                 'date_notified' => $this->input->post('date_notified'),
 
                 //Checkboxes(yes/no)
-                'completed_by_other_user' => $completed_by_other_user,
+                //'completed_by_other_user' => $completed_by_other_user,
                 //'invoice_sent' => $this->input->post('invoice_sent'),
                 //'payment_received' => $this->input->post('payment_received'),
                 'invoice_needed' => $invoice_needed,
@@ -55,8 +57,8 @@
                 //Dropdown Boxes
                 'status_id' => $this->input->post('status_id'),
                 'agency_id' => $this->input->post('agency_id'),
-                'user_id' => $this->input->post('user_id'),
-                'other_user_id' => $this->input->post('other_user_id'),
+                //'user_id' => $this->input->post('user_id'),
+                //'other_user_id' => $this->input->post('other_user_id'),
 
                 //Textboxes
                 'govqa' => $this->input->post('govqa'),
@@ -71,16 +73,45 @@
                 'comments' => $this->input->post('comments')
             );
 
-            $this->db->where('id', $this->input->post('id'));
+            $this->db->where('id', $id);
 			return $this->db->update('requests', $data);
 
         }
 
-        public function update_request_prs($id){
-
+        public function search_requests($input, $id){
+            
+            $sql = "select r.id, r.date_received, r.date_completed, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+                        from requests as r
+                            join users as u on r.user_id = u.id
+                            join status as s on r.status_id = s.id
+                            join agency as a on r.agency_id = a.id
+                        where r.user_id = ".$id." 
+                                and (r.govqa like '%".$input."%'
+                                or s.status like '%".$input."%'
+                                or r.pd_case like '%".$input."%'
+                                or r.agency_agent like '%".$input."%'
+                                or a.agency_name like '%".$input."%'
+                                or r.comments like '%".$input."%'
+                                or u.lastname like '%".$input."%'
+                                or u.firstname like '%".$input."%'
+                                or r.id like '%".$input."%')
+                        order by r.date_received;";
+            $query = $this->db->query($sql);
+            return $query->result_array();
         }
 
-        public function search_requests($input){
+        public function get_paid_open_request_prs($id){
+
+            $sql = "select r.id, r.date_received, r.govqa, s.status, r.pd_case, a.agency_name, concat(u.lastname,\", \", u.firstname) as name, comments 
+                    from requests as r
+                        left join users as u on r.user_id = u.id
+                        left join status as s on r.status_id = s.id
+                        left join agency as a on r.agency_id = a.id
+                    where r.user_id = ".$id." and r.date_paid is not null and r.invoice_needed = 1 and (r.date_completed is null or r.date_completed = '0000-00-00')
+                    or r.user_id = ".$id." and r.date_paid != '0000-00-00' and r.invoice_needed = 1 and (r.date_completed is null or r.date_completed = '0000-00-00')
+                    order by r.date_paid;";
+            $query = $this->db->query($sql);
+            return $query->result_array();
 
         }
 

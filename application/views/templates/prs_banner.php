@@ -9,18 +9,24 @@
             <h1 class="text-center">PRS NAME</h1>
         </div>
     </div><!-- Middle Row Name-->
-    <div class="row">
+    <div class="row mt-2">
         <div class="col">
             <p>Change Password</p>
         </div><!-- Link -->
         <div class="col">
-            <p>Search Requests</p>
+            <p><a href="<?php echo base_url(); ?>PRS/dashboard" style="color:white;">Dashboard</a></p>
+        </div><!-- Link -->
+        <div class="col">
+            <p><a href="<?php echo base_url(); ?>PRS/paid_open_requests_prs" style="color:white;">Paid/Open</a></p>
+        </div><!-- Link -->
+        <div class="col">
+        <p><a href="<?php echo base_url(); ?>PRS/search_requests" style="color:white;">Search Requests</a></p>
         </div><!-- Link -->
         <div class="col">
             <p>View Statistics</p>
         </div><!-- Link -->
         <div class="col">
-            <p>Link 4</p>
+            <p>Log Out</p>
         </div><!-- Link -->
     </div><!-- Bottom Row Links -->
 

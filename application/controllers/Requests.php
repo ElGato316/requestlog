@@ -83,6 +83,7 @@
 		}
 
         public function search(){
+            
             $data['title'] = "Request Search";
 
             if ($this->input->server('REQUEST_METHOD') === 'GET') {
