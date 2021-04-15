@@ -38,13 +38,18 @@
     <div class="row">
         <div class="col">
         </div>
-        <div class="col">
+        <div class="col" id="login_error">
         <?php if($this->session->flashdata('error')): ?>
         <?php echo '<label class="text-danger">'.$this->session->flashdata("error").'</label>'; ?>  
         <?php endif; ?>
-        </div>
+         </div>
         <div class="col">
         </div>
     </div>
+    <script>
+        setTimeout(function(){
+            $('#login_error').fadeOut('fast');
+        }, 3000);
+    </script>
 
 </div>

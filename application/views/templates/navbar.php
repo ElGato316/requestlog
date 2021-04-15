@@ -1,5 +1,5 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3 mt-3 rounded">
-      <a class="navbar-brand p-2" href="<?php echo base_url(); ?>">Request Log</a>
+      <h4 class="text-white pr-3">Reqeust Log</h4>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <?php if(!empty($_SESSION['logged_in'])): ?>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
