@@ -37,14 +37,23 @@
         }
 
         public function view(){
-            $data['title'] = "All Open Records";
 
-            $data['requests'] = $this->Request_model->get_all_open_requests();
+            if($_SESSION['logged_in'] == TRUE && $_SESSION['supervisor'] == 1){
+                
+                $data['title'] = "All Open Records";
 
-            $this->load->view('templates/header');
-            $this->load->view('templates/navbar');
-            $this->load->view('requests/rms_view', $data);
-            $this->load->view('templates/footer');
+                $data['requests'] = $this->Request_model->get_all_open_requests();
+    
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('requests/rms_view', $data);
+                $this->load->view('templates/footer');
+            }else{
+                $this->session->set_flashdata('permission', 'Your do not have permission to view the supervisor dahsboard!');
+                redirect('PRS/dashboard');
+            }
+
+
         }
 
         public function edit($id){

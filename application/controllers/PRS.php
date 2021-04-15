@@ -2,10 +2,13 @@
     class PRS extends CI_Controller{
      
         public function dashboard(){
+            if(!$_SESSION['logged_in']){
+				redirect('login/view');
+			}
             
-            $data['title'] = "All Open Requests For ";
+            $data['title'] = "All Open Requests For ".$_SESSION['firstname']." ".$_SESSION['lastname']."";
             
-            $id = 27;
+            $id = $_SESSION['id'];
 
             $data['requests'] = $this->PRS_model->get_open_requests_by_prs($id);
 
@@ -17,6 +20,10 @@
 
         public function edit_request($id){
 
+            if ($_SESSION['logged_in'] == FALSE) {
+                redirect('login/view');
+            }
+            
             $data['title'] = "Edit Record";
 
             $data['request'] = $this->Request_model->get_request($id);
@@ -53,6 +60,10 @@
 
         public function search_requests(){
 
+            if ($_SESSION['logged_in'] == FALSE) {
+                redirect('login/view');
+            }
+
             $data['title'] = "Request Search";
 
             if ($this->input->server('REQUEST_METHOD') === 'GET') {
@@ -66,7 +77,7 @@
 
                 $data['input'] = $input;
 
-                $id = 27;
+                $id = $_SESSION['id'];
 
                 $data['requests'] = $this->PRS_model->search_requests($input, $id);
 
@@ -79,13 +90,21 @@
 
         public function change_password(){
 
+            if ($_SESSION['logged_in'] == FALSE) {
+                redirect('login/view');
+            }
+
         }
 
         public function paid_open_requests_prs(){
 
+            if ($_SESSION['logged_in'] == FALSE) {
+                redirect('login/view');
+            }
+
             $data['title'] = "Paid and Open Requests For ...";
 
-            $id = 27;
+            $id = $_SESSION['id'];
 
             $data['requests'] = $this->PRS_model->get_paid_open_request_prs($id);
 

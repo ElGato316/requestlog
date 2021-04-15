@@ -1,41 +1,47 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3 mt-3 rounded">
-        <a class="navbar-brand p-2" href="<?php echo base_url(); ?>">Request Log</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Users
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/add">Add User</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/view">All Users</a></li>
+      <a class="navbar-brand p-2" href="<?php echo base_url(); ?>">Request Log</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <?php if(!empty($_SESSION['logged_in'])): ?>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Users
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/add">Add User</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/view">All Users</a></li>
 
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Requests
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">Add Request</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view">All Open Requests</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search">Search Requests</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search_user">Search Requests By PRS</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search_by_status">Search Requests By Status</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view_pending_invoices">Requests Pending Invoice</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Reports
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Chief's Weekly</a></li>
+                <li><a class="dropdown-item" href="#">PRS Monthly</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Requests
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">Add Request</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view">All Open Requests</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search">Search Requests</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search_user">Search Requests By PRS</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search_by_status">Search Requests By Status</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view_pending_invoices">Requests Pending Invoice</a></li>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item text-white pr-3">Logged in as : <?php echo $_SESSION['firstname']." ".$_SESSION['lastname']; ?></li>
+            <li class="nav-item"><a href="<?php echo base_url(); ?>login/logout" class="text-white">Logout</a></li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Reports
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Chief's Weekly</a></li>
-            <li><a class="dropdown-item" href="#">PRS Monthly</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+          <?php endif; ?>
+      </div>
     </nav>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

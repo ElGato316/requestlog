@@ -6,7 +6,7 @@
     </div><!-- Top Row -->
     <div class="row">
         <div class="col col-md-12">
-            <h1 class="text-center">PRS NAME</h1>
+            <h1 class="text-center"><?php echo $_SESSION['firstname']." ". $_SESSION['lastname']; ?></h1>
         </div>
     </div><!-- Middle Row Name-->
     <div class="row mt-2">
@@ -26,7 +26,7 @@
             <p>View Statistics</p>
         </div><!-- Link -->
         <div class="col">
-            <p>Log Out</p>
+            <p><a href="<?php echo base_url(); ?>login/logout" class="text-white">Logout</a></p>
         </div><!-- Link -->
     </div><!-- Bottom Row Links -->
 

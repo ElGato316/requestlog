@@ -1,8 +1,7 @@
         
 
 <h2 class="text-center"><?php echo $title; ?></h2>
-        
-        
+                
         <div class="row mt-4">
             <div class="col-12 border border-primary rounded p-2">
                 <table class="table table-striped" id="requests">

@@ -133,9 +133,14 @@
 				<textarea class="form-control" rows="5" name="comments"><?php echo $request['comments']; ?></textarea>
 			</div>
 		</div>
-		<div class="pt-3">
+		<?php if($request['user_id'] == $_SESSION['id']){ ?>
+			<div class="pt-3">
 			<input class="btn btn-primary" type="submit" value="Submit">
-		</div>
+			</div>
+		<?php }else{ ?>
+			<h3 class="mt-3 text-danger">Request Not Assigned To You</h3>
+		<?php }; ?>
+
 		</fieldset>
     </form>
     </div>
