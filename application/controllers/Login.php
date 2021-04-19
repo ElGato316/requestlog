@@ -35,7 +35,17 @@
 					);
 
 					$this->session->set_userdata($session_data);
-					//redirect('PRS/dashboard');
+
+					$ip = $this->input->ip_address();
+
+					$data = array(
+						'user_id' => $user['id'],
+						'comments' => 'Logged In',
+						'ip_address' => $ip
+					);
+
+					$this->db->insert('transactions', $data);
+
 
 					if ($user['supervisor'] == 1) {
 						redirect('requests/view');
@@ -56,12 +66,24 @@
 
 		public function logout(){
 
+			
+			$ip = $this->input->ip_address();
+
+			$data = array(
+				'user_id' => $_SESSION['id'],
+				'comments' => 'Logged Out',
+				'ip_address' => $ip
+			);
+
+			$this->db->insert('transactions', $data);
+			
 			// Unset user data
 			$this->session->unset_userdata('id');
 			$this->session->unset_userdata('firstname');
 			$this->session->unset_userdata('lastname');
 			$this->session->unset_userdata('supervisor');
 			$this->session->unset_userdata('logged_in');
+			//$this->session->unset_flashdata();
 
 			// Set message
 			$this->session->set_flashdata('user_loggedout', 'You are now logged out');

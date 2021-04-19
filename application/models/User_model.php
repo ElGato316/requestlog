@@ -28,6 +28,14 @@
             return $query->row_array();
         }
 
+        public function get_last_user(){
+            $sql = "select id from users order by id desc limit 1";
+
+            $query = $this->db->query($sql);
+
+            return $query->row_array();
+        }
+
         public function add_user($enc_password){
 
             $data = array(

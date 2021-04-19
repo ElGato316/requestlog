@@ -36,7 +36,7 @@
 				// Set message
 				$this->session->set_flashdata('user_entered', 'User '.$this->input->post('username').' has been added.', 20);
 
-				redirect('users/view');
+				redirect('transactions/add_user');
 			}
 		}
 
@@ -54,10 +54,24 @@
 		}
 
 		public function update(){
+
 			$this->User_model->edit_user($id);
 
 			// Set message
 			$this->session->set_flashdata('user_updated', 'User '.$this->input->post('username').' has been updated.', 20);
+
+			$id = $this->input->post('id');
+
+			$ip = $this->input->ip_address();
+
+			$data = array(
+				'user_id' => $_SESSION['id'],
+				'comments' => 'User Updated',
+				'ip_address' => $ip,
+				'user_id_updated' => $id
+			);
+
+			$this->db->insert('transactions', $data);
 
 			redirect('users/view');
 		}

@@ -289,5 +289,14 @@
 
         }
 
+        public function get_last_request_id(){
+
+            $sql = "select id from requests order by id desc limit 1";
+
+            $query = $this->db->query($sql);
+
+            return $query->row_array();
+        }
+
 
     }

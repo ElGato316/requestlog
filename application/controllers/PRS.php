@@ -54,6 +54,19 @@
             //print_r($str);
             //exit;
 
+            $id = $this->input->post('id');
+
+			$ip = $this->input->ip_address();
+
+			$data = array(
+				'user_id' => $_SESSION['id'],
+				'comments' => 'Request Updated',
+				'ip_address' => $ip,
+				'request_id' => $id
+			);
+
+			$this->db->insert('transactions', $data);
+
 			redirect('PRS/dashboard');
 
         }
