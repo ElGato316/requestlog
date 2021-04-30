@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="row pt-3">
-			<div class="col col-3">
+		<div class="col col">
 				<label class="form-label">Agency:</label><br>
 				<select class="form-select" name="agency_id">
                     <option selected="<?php echo $request['agency_id']; ?>" value="<?php echo $request['agency_id']; ?>"><?php echo $request['agency_name']; ?></option>
@@ -60,10 +60,13 @@
                     <?php endforeach; ?>
 				</select>
 			</div>
-			<div class="col col-4 ml-3">
+			<div class="col ml-3">
 				<label class="form-label">Agency Contact:</label>
 				<input type="text" class="form-control" name="agency_agent" value="<?php echo $request['agency_agent']; ?>">
 			</div>
+		
+		</div>
+		<div class="row pt-3">
 			<div class="col">
 				<label class="form-label"># of Vids</label>
 				<input type="text" class="form-control" name="number_of_videos" value="<?php echo $request['number_of_videos']; ?>" style="width: 100px;">
@@ -75,11 +78,6 @@
 			<div class="col">
 				<label class="form-label">Video Hours:</label>
 				<input type="text" class="form-control" name="hours_reviewed" value="<?php echo $request['hours_reviewed']; ?>" style="width: 100px;">
-			</div>
-		</div>
-		<div class="row pt-3">
-			<div class="col col-md-1">
-				<!-- Spacing -->
 			</div>
 			<div class="col pt-4 mx-auto">
 				<label class = "form-check-label pl-5"><input type="checkbox" class="form-check-input" value="1" <?php echo ($request['invoice_needed']==1 ? 'checked' : ''); ?> id="invoice_needed" name="invoice_needed">Invoice Needed</label>
