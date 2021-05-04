@@ -1,16 +1,18 @@
 <h2 class="text-center"><?php echo $title; ?></h2>
         
         <div class="row">
+        <!--
             <div class="col-12" id="permission-flashdata">
-                <?php if($this->session->flashdata('permission')): ?>
-                <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('permission').'</p>'; ?>
-                <?php endif; ?>
+                <?php //if($this->session->flashdata('permission')): ?>
+                <?php //echo '<p class="alert alert-danger">'.$this->session->flashdata('permission').'</p>'; ?>
+                <?php //endif; ?>
             </div>
             <script>
                 setTimeout(function(){
                     $('#permission-flashdata').fadeOut('fast');
                 }, 3000);
             </script>
+        -->
         </div>
         <div class="row mt-4">
             <div class="col-12 border border-primary rounded p-2">
