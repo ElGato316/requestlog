@@ -30,28 +30,36 @@
     <h3 class="text-center">No Results</h3>
 <?php } else { ?>
     <h3 class="text-center">Report For Week Ending: <?php echo date('m/d/Y', strtotime($end_date)); ?></h3>
+
     <div class="row mt-4">
             <div class="col-12 border border-primary rounded p-2">
                 <table class="table table-striped" id="chiefs_weekly">
                     <caption>Chief's Weekly</caption>
                     <thead>
                         <th scope="col">Agency</th>
-                        <th scope="col">Current Week Received</th>
-                        <th scope="col">Received YTD</th>
-                        <th scope="col">Completed YTD</th>
-                        <th scope="col">Last Year To Date</th>
+                        <th class="text-center" scope="col">Current Week Received</th>
+                        <th class="text-center" scope="col">Received YTD</th>
+                        <th class="text-center" scope="col">Completed YTD</th>
+                        <th class="text-center" scope="col">Last Year To Date</th>
                     </thead>
                     <tbody id="users-body"> 
                     <?php foreach($requests as $request): ?>
                         <tr class="" id="">
                             <td><?php echo $request['Agency']; ?></td>
-                            <td><?php echo $request['ReceivedTW']; ?></td>
-                            <td><?php echo $request['ReceivedTY']; ?></td>
-                            <td><?php echo $request['CompletedTY']; ?></td>
-                            <td><?php echo $request['ReceivedLYTD']; ?></td>
+                            <td class="text-center"><?php echo $request['ReceivedTW']; ?></td>
+                            <td class="text-center"><?php echo $request['ReceivedTY']; ?></td>
+                            <td class="text-center"><?php echo $request['CompletedTY']; ?></td>
+                            <td class="text-center"><?php echo $request['ReceivedLYTD']; ?></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
+                    <tfoot>
+                        <td><h5>Totals</h5></td>
+                        <td class="text-center"><h5><?php echo $week_total; ?></h5></td>
+                        <td class="text-center"><h5><?php echo $received_ytd; ?></h5></td>
+                        <td class="text-center"><h5><?php echo $completed_ytd; ?></h5></td>
+                        <td class="text-center"><h5><?php echo $received_lytd; ?></h5></td>
+                    </tfoot>
                 </table>
             </div><!--Table of Reuqests-->
         </div><!--Main Table-->

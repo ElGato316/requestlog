@@ -48,4 +48,35 @@
             return $query->result_array();
 
         }
+
+        public function select_count_received_week($start_date, $end_date){
+
+            $sql = "SELECT COUNT(1) as count FROM requests WHERE Date_Assigned BETWEEN '".$start_date."' AND '".$end_date."'";
+            $query = $this->db->query($sql);
+            return $query->row()->count; 
+        }
+
+        public function select_received_ytd($this_year, $end_date){
+
+            $sql = "SELECT COUNT(1) as count FROM requests WHERE Date_Assigned BETWEEN '".$this_year."-01-01' AND '".$end_date."'";
+            $query = $this->db->query($sql);
+            return $query->row()->count;
+
+        }
+
+        public function select_completed_ytd($this_year, $end_date){
+
+            $sql = "SELECT COUNT(1) as count FROM requests WHERE Date_Completed BETWEEN '".$this_year."-01-01' AND '".$end_date."'";
+            $query = $this->db->query($sql);
+            return $query->row()->count;
+
+        }
+
+        public function select_received_lytd($last_year, $end_date_ly){
+
+            $sql = "SELECT COUNT(1) as count FROM requests WHERE Date_Assigned BETWEEN '".$last_year."-01-01' AND '".$end_date_ly."'";
+            $query = $this->db->query($sql);
+            return $query->row()->count;
+
+        }
     }
