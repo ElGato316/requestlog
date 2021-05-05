@@ -89,6 +89,7 @@
 
             $data = array(
                 'date_received' => $this->input->post('date_received'),
+                'date_completed' => '0000-00-00',
                 'govqa' => $this->input->post('govqa'),
                 'pd_case' => $this->input->post('pd_case'),
                 'agency_id' => $this->input->post('agency_id'),

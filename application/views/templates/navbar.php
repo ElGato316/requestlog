@@ -32,7 +32,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>reports/chiefs_weekly">Chief's Weekly</a></li>
-                <li><a class="dropdown-item" href="#">PRS Monthly</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>reports/prs_monthly">PRS Monthly</a></li>
               </ul>
             </li>
           </ul>

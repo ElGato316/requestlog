@@ -79,4 +79,45 @@
             return $query->row()->count;
 
         }
+
+        public function prs_monthly($prs_id, $start_date, $end_date, $year_start){
+
+            $sql = "SELECT 	
+                        u.id,
+                        CONCAT(u.lastname, ', ', u.firstname) as Name,
+                        ReceivedTM.Requests as ReceivedTM,
+                        CompletedTM.Requests as CompletedTM,
+                        VideosRedactedTM.Requests as VideosRedactedTM,
+                        ReceivedYTD.Requests as ReceivedYTD,
+                        CompletedYTD.Requests as CompletedYTD,
+                        VideosRedactedYTD.Requests as VideosRedactedYTD
+                
+                    FROM 
+                        users as u
+                        LEFT OUTER JOIN 
+                            (SELECT user_id, COUNT(1) as Requests FROM requests WHERE date_assigned BETWEEN '".$start_date."' and '".$end_date."' GROUP BY user_id) 
+                            as ReceivedTM on u.id = ReceivedTM.user_id
+                        LEFT OUTER JOIN 
+                            (SELECT user_id, COUNT(1) as Requests FROM requests WHERE date_completed BETWEEN '".$start_date."' and '".$end_date."' GROUP BY user_id) 
+                            as CompletedTM on u.id = CompletedTM.user_id
+                        LEFT OUTER JOIN 
+                            (SELECT user_id, SUM(videos_redacted) as Requests FROM requests WHERE date_completed BETWEEN '".$start_date."' and '".$end_date."' GROUP BY user_id) 
+                            as VideosRedactedTM on u.id = VideosRedactedTM.user_id
+                        LEFT OUTER JOIN 
+                            (SELECT user_id, COUNT(1) as Requests FROM requests WHERE date_assigned BETWEEN '".$year_start."' and '".$end_date."' GROUP BY user_id) 
+                            as ReceivedYTD on u.id = ReceivedYTD.user_id
+                        LEFT OUTER JOIN 
+                            (SELECT user_id, COUNT(1) as Requests FROM requests WHERE date_completed BETWEEN '".$year_start."' and '".$end_date."' GROUP BY user_id) 
+                            as CompletedYTD on u.id = CompletedYTD.user_id
+                        LEFT OUTER JOIN 
+                            (SELECT user_id, SUM(videos_redacted) as Requests FROM requests WHERE date_completed BETWEEN '".$year_start."' and '".$end_date."' GROUP BY user_id) 
+                            as VideosRedactedYTD on u.id = VideosRedactedYTD.user_id
+                    
+                    WHERE
+                        u.id = $prs_id";
+
+            $query = $this->db->query($sql);
+                        
+            return $query->row_array();
+        }
     }

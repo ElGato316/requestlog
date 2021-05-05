@@ -49,5 +49,37 @@
 
     	public function prs_monthly(){
     		
+            $data['title'] = "PRS Monthly Report";
+
+            $data['users'] = $this->User_model->get_all_active_users();
+            
+            $this->load->view('templates/header');
+            $this->load->view('templates/navbar');
+            $this->load->view('reports/prs_monthly', $data);
+            $this->load->view('templates/footer');
     	}
+
+        public function prs_monthly_report(){
+
+            if ($this->input->server('REQUEST_METHOD') === 'POST') {
+             
+                $prs_id = $this->input->post('user');
+                $start_date = $this->input->post('start_date');
+                $end_date = $this->input->post('end_date');
+                $year_start = date('Y', strtotime($start_date))."-01-01";
+    
+                $data['stats'] = $this->Report_model->prs_monthly($prs_id, $start_date, $end_date, $year_start);
+                $data['start_date'] = $start_date;
+                $data['end_date'] = $end_date;
+    
+                $this->load->view('templates/header');
+                //$this->load->view('templates/navbar');
+                $this->load->view('reports/prs_monthly_report', $data);
+                $this->load->view('templates/footer');
+
+            }else{
+                redirect('reports/prs_monthly');
+            }
+
+        }
     }
