@@ -44,6 +44,11 @@
 
         public function update_request(){
 
+
+            if ($_SESSION['logged_in'] == FALSE) {
+                redirect('login/view');
+            }
+
             $this->PRS_model->edit_request_prs($id);
 
 			// Set message
@@ -125,5 +130,37 @@
             $this->load->view('templates/prs_banner');
             $this->load->view('prs/prs_view_paid', $data);
             $this->load->view('templates/footer');
+        }
+
+        public function prs_statistics(){
+            if ($_SESSION['logged_in'] == FALSE) {
+                redirect('login/view');
+            }
+
+            $data['title'] = "PRS Statistics";
+
+            if ($this->input->server('REQUEST_METHOD') === 'GET') {
+                $this->load->view('templates/header');
+                $this->load->view('templates/prs_banner');
+                $this->load->view('prs/prs_stats', $data);
+                $this->load->view('templates/footer');
+            } else {
+
+                $prs_id = $_SESSION['id'];
+                $start_date = $this->input->post('start_date');
+                $end_date = $this->input->post('end_date');
+                $year_start = date('Y', strtotime($start_date))."-01-01";
+    
+                $data['stats'] = $this->Report_model->prs_monthly($prs_id, $start_date, $end_date, $year_start);
+
+                $data['start_date'] = $start_date;
+                $data['end_date'] = $end_date;
+
+                $this->load->view('templates/header');
+                $this->load->view('templates/prs_banner');
+                $this->load->view('prs/prs_stats', $data);
+                $this->load->view('templates/footer');
+            }
+
         }
     }

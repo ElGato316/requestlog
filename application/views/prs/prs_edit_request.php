@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="row pt-3">
-			<div class="col col-3">
+			<div class="col">
 				<label class="form-label">Agency:</label><br>
 				<select class="form-select" name="agency_id">
                     <option selected="<?php echo $request['agency_id']; ?>" value="<?php echo $request['agency_id']; ?>"><?php echo $request['agency_name']; ?></option>
@@ -60,10 +60,12 @@
                     <?php endforeach; ?>
 				</select>
 			</div>
-			<div class="col col-4 ml-3">
+			<div class="col">
 				<label class="form-label">Agency Contact:</label>
 				<input type="text" class="form-control" name="agency_agent" value="<?php echo $request['agency_agent']; ?>">
 			</div>
+		</div>
+		<div class="row pt-3">
 			<div class="col">
 				<label class="form-label"># of Vids</label>
 				<input type="text" class="form-control" name="number_of_videos" value="<?php echo $request['number_of_videos']; ?>" style="width: 100px;">

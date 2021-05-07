@@ -23,7 +23,7 @@
         <p><a href="<?php echo base_url(); ?>PRS/search_requests" style="color:white;">Search Requests</a></p>
         </div><!-- Link -->
         <div class="col">
-            <p>View Statistics</p>
+            <p><a href="<?php echo base_url(); ?>PRS/prs_statistics" class="text-white">View Statistics</a></p>
         </div><!-- Link -->
         <div class="col">
             <p><a href="<?php echo base_url(); ?>login/logout" class="text-white">Logout</a></p>

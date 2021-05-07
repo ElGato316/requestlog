@@ -48,15 +48,20 @@
     	}
 
     	public function prs_monthly(){
-    		
-            $data['title'] = "PRS Monthly Report";
 
-            $data['users'] = $this->User_model->get_all_active_users();
-            
-            $this->load->view('templates/header');
-            $this->load->view('templates/navbar');
-            $this->load->view('reports/prs_monthly', $data);
-            $this->load->view('templates/footer');
+            if($_SESSION['logged_in'] == TRUE && $_SESSION['supervisor'] == 1){
+    		
+                $data['title'] = "PRS Monthly Report";
+
+                $data['users'] = $this->User_model->get_all_active_users();
+                
+                $this->load->view('templates/header');
+                $this->load->view('templates/navbar');
+                $this->load->view('reports/prs_monthly', $data);
+                $this->load->view('templates/footer');
+            }else{
+                redirect('login/view');
+            }
     	}
 
         public function prs_monthly_report(){
