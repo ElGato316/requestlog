@@ -112,6 +112,50 @@
                 redirect('login/view');
             }
 
+            $data['title'] = "Change Current Password";
+            //$data['current_password_db'] = $this->User_model->get_password($prs_id);
+
+            if ($this->input->server('REQUEST_METHOD') === 'GET') {
+
+                $this->load->view('templates/header');
+                $this->load->view('templates/prs_banner');
+                $this->load->view('prs/prs_change_password', $data);
+                $this->load->view('templates/footer');
+
+            }else{
+
+                $prs_id = $_SESSION['id'];
+                $current_password_input = md5($this->input->post('current_password'));
+                $new_password = $this->input->post('new_password');
+                $confirm_password = $this->input->post('confirm_password'); 
+                $enc_password = md5($new_password);
+                $current_password_db = $this->User_model->get_password($prs_id);
+
+                if($current_password_input === $current_password_db){
+
+                    if($new_password === $confirm_password){
+
+                        $this->User_model->update_password($prs_id, $enc_password);
+
+                        // Set message
+                        $this->session->set_flashdata('password_updated', 'Password Changed', 20);
+                
+                        redirect('Transactions/updated_password');
+
+                    }else{
+                        // Set message
+                        $this->session->set_flashdata('password_confirm_error', 'Your New Passwords Do Not Match!', 20);
+                        redirect('PRS/change_password');
+
+                    }
+
+                }else{
+                    // Set message
+				    $this->session->set_flashdata('password_error', 'Wrong Current Password! ', 20);
+                    redirect('PRS/change_password');
+                }
+
+            };
         }
 
         public function paid_open_requests_prs(){

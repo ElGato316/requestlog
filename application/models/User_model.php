@@ -84,4 +84,24 @@
 
         }
         
+        public function get_password($user_id){
+
+            $sql = "SELECT password FROM users WHERE id = ?";
+
+            $query = $this->db->query($sql, $user_id);
+
+            return $query->row()->password;
+
+        }
+
+        public function update_password($user_id, $new_password){
+
+            $data = array(
+                'password' => $new_password
+            );
+
+            $this->db->where('id', $user_id);
+            return $this->db->update('users', $data);
+
+        }
     }

@@ -11,7 +11,7 @@
     </div><!-- Middle Row Name-->
     <div class="row mt-2">
         <div class="col">
-            <p>Change Password</p>
+            <p><a href="<?php echo base_url(); ?>PRS/change_password" style="color:white;">Change Password</a></p>
         </div><!-- Link -->
         <div class="col">
             <p><a href="<?php echo base_url(); ?>PRS/dashboard" style="color:white;">Dashboard</a></p>

@@ -1,4 +1,5 @@
 <h2 class="text-center"><?php echo $title; ?></h2>
+<h4 class="text-success"><?php echo $this->session->flashdata('password_updated'); ?></h4>
         
         <div class="row">
         <!--

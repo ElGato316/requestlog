@@ -36,5 +36,20 @@
 
             redirect('requests/add');
         }
+
+        public function updated_password(){
+
+            $ip = $this->input->ip_address();
+
+            $data = array(
+                'user_id' => $_SESSION['id'],
+                'comments' => 'Updated Password',
+                'ip_address' => $ip
+            );
+
+            $this->db->insert('transactions', $data);
+
+            redirect('PRS/dashboard');
+        }
         
     }
