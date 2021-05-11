@@ -19,7 +19,7 @@
             $sql = "select concat(u.lastname,\", \", u.firstname) as name, count(*) as opened
                     from requests as r
                         join users as u on r.user_id = u.id
-                    where date_completed is null 
+                    where date_completed = '0000-00-00' 
                     group by user_id
                     order by u.lastname;";
             $query = $this->db->query($sql);
