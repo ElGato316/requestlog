@@ -34,7 +34,7 @@
 			</div>
 			<div class="col">
 				<label class="form-label">Status</label><br>
-				<select class="form-select" name="status_id">
+				<select class="form-select" name="status_id" id="status_id" onChange="dateCompleted()">
                     <option selected="<?php echo $request['status_id']; ?>" value="<?php echo $request['status_id']; ?>"><?php echo $request['status_name']; ?></option>
                     <?php foreach($statuses as $status): ?>
                     <option value="<?php echo $status['id']; ?>"><?php echo $status['status']; ?></option>
