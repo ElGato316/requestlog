@@ -107,8 +107,7 @@
                         left join users as u on r.user_id = u.id
                         left join status as s on r.status_id = s.id
                         left join agency as a on r.agency_id = a.id
-                    where r.user_id = ".$id." and r.date_paid is not null and r.invoice_needed = 1 and (r.date_completed is null or r.date_completed = '0000-00-00')
-                    or r.user_id = ".$id." and r.date_paid != '0000-00-00' and r.invoice_needed = 1 and (r.date_completed is null or r.date_completed = '0000-00-00')
+                    where r.user_id = ".$id." and r.date_paid != '0000-00-00' and r.date_completed = '0000-00-00'
                     order by r.date_paid;";
             $query = $this->db->query($sql);
             return $query->result_array();
