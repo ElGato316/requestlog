@@ -48,7 +48,7 @@
                     <div class="form-group row">
                         <div class="col">
                             <label for="status" class="">Staus:</label>
-                            <select name="status" id="status" style="">
+                            <select name="status" id="status">
                                 <?php foreach($statuses as $status) : ?>
                                     <option value="<?php echo $status['id']; ?>" class="form-control"><?php echo $status['status']; ?></option>
                                 <?php endforeach; ?>

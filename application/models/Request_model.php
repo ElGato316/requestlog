@@ -262,10 +262,9 @@
                         join status as s on r.status_id = s.id
                         join agency as a on r.agency_id = a.id
                     where r.invoice_needed = 1 
-                            and r.date_invoiced is null 
-                            and r.date_completed is null 
+                            and r.date_invoiced = '0000-00-00' 
+                            and r.date_completed = '0000-00-00' 
                             and s.id NOT IN (1,3,5,12)
-                            or r.date_invoiced = '0000-00-00' 
                     order by r.date_received;";
 
             $query = $this->db->query($sql);

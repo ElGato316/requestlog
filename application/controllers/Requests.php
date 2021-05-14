@@ -2,6 +2,9 @@
     class Requests extends CI_Controller{
 
         public function add(){
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
 
             $data['title'] = "Add Request";
 
@@ -58,6 +61,11 @@
 
         public function edit($id){
 
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
+
+
             $data['title'] = "Edit Record";
 
             $data['request'] = $this->Request_model->get_request($id);
@@ -77,6 +85,10 @@
         }
 
         public function update(){
+
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
 
 			$this->Request_model->edit_request($id);
 
@@ -106,6 +118,10 @@
 		}
 
         public function search(){
+
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
             
             $data['title'] = "Request Search";
 
@@ -129,6 +145,11 @@
         }
 
         public function search_user(){
+
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
+
             $data['title'] = "Search Requests By User";
 
             $data['users'] = $this->User_model->get_all_active_users();
@@ -153,6 +174,10 @@
 
         public function search_by_status(){
 
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
+
             $data['title'] = "Search Requests By Status";
 
             $data['statuses'] = $this->Request_model->get_statuses();
@@ -176,6 +201,10 @@
         }
 
         public function view_pending_invoices(){
+
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
 
             $data['title'] = "Requests Pending Invoice";
 
