@@ -66,6 +66,10 @@
 
         public function prs_monthly_report(){
 
+            if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
+
             if ($this->input->server('REQUEST_METHOD') === 'POST') {
              
                 $prs_id = $this->input->post('user');

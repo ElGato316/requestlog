@@ -2,6 +2,9 @@
     class Users extends CI_Controller{
         
         public function view(){
+			if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
 
 			$data['title'] = 'All Users';
 
@@ -14,6 +17,10 @@
 		}
 
 		public function add(){
+
+			if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
 
 			$data['title'] = 'Add User';
 
@@ -42,6 +49,10 @@
 
 		public function edit($id){
 
+			if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
+
 			$data['user'] = $this->User_model->get_user($id);
 
 			$data['title'] = 'Edit Post';
@@ -54,6 +65,10 @@
 		}
 
 		public function update(){
+
+			if($_SESSION['logged_in'] == FALSE || $_SESSION['supervisor'] == 0){
+                redirect('login/view');
+            }
 
 			$this->User_model->edit_user($id);
 
