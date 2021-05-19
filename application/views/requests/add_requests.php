@@ -27,6 +27,7 @@
                         <div class="col-4">
                             <label for="agency" class="">Agency:</label><br />
                             <select name="agency_id" id="agency" style="width: 220px;">
+                                <option value="0">Select an Agency</option>
                                 <?php foreach($agencies as $agency) : ?>
                                     <option value="<?php echo $agency['id']; ?>" class="form-control"><?php echo $agency['agency']; ?></option>
                                 <?php endforeach; ?>
@@ -39,6 +40,7 @@
                         <div class="col-4">
                             <label for="prs" class="">PRS:</label><br />
                             <select name="user_id" id="prs" style="width: 220px;">
+                                <option value="0">Select a PRS</option>
                                 <?php foreach($users as $user) : ?>
                                     <option value="<?php echo $user['id']; ?>" class="form-control"><?php echo $user['name']; ?></option>
                                 <?php endforeach; ?>
@@ -49,6 +51,7 @@
                         <div class="col">
                             <label for="status" class="">Staus:</label>
                             <select name="status" id="status">
+                                <option value="0">Set Status</option>
                                 <?php foreach($statuses as $status) : ?>
                                     <option value="<?php echo $status['id']; ?>" class="form-control"><?php echo $status['status']; ?></option>
                                 <?php endforeach; ?>

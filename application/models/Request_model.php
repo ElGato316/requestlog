@@ -105,7 +105,7 @@
         }
 
         public function get_request($id){
-            $sql = "select r.id, r.date_received, r.govqa, r.pd_case, r.activity_number, r.user_id, concat(u.lastname, ', ', u.firstname) as name, 
+            $sql = "select r.id, r.date_received, r.govqa, r.pd_case, r.activity_number, r.user_id, concat(u.firstname, ' ', u.lastname) as name, 
                     r.status_id, s.status as status_name, r.date_completed, r.agency_id, a.agency_name, r.agency_agent, r.number_of_videos,
                     r.videos_redacted, r.hours_reviewed, r.invoice_needed, r.date_invoiced, r.date_paid, r.officer_notified, r.date_notified, 
                     r.completed_by_other_user, r.other_user_id, concat(u2.lastname, ', ', u2.firstname) as name2, r.comments
