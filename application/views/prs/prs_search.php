@@ -40,7 +40,7 @@
                     <tbody id="users-body"> 
                     <?php foreach($requests as $request): ?>
                         <tr>
-                        <td><a href="<?php echo base_url(); ?>requests/edit/<?php echo $request['id']; ?>">Edit</a></td>
+                        <td><a href="<?php echo base_url(); ?>PRS/edit_request/<?php echo $request['id']; ?>">Edit</a></td>
                             <td><?php echo $request['date_received']; ?></td>
                             <td><?php echo $request['date_completed']; ?></td>
                             <td><?php echo $request['agency_name']; ?></td>
