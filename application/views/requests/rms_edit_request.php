@@ -92,23 +92,20 @@
 			</div>
 			<div class="col">
 				<label class="form-label">Date Paid:</label>
-                <?php if (is_null($request['date_paid'])) { ?>
-                    <input type="date" class="form-control" id="paid_date" name="date_paid" value="">
-                <?php } else { ?>
-                    <input type="date" class="form-control" id="paid_date" name="date_paid" value="<?php echo $request['date_paid']; ?>">
-                <?php }; ?>
+                <input type="date" class="form-control" id="paid_date" name="date_paid" value="<?php echo $request['date_paid']; ?>">
 			</div>
 		</div>
 		<div class="row pt-3 p-3">
 			<div class="col col-md-5 form-check border border-primary rounded p-3">
-				<label class = "checkbox-inline"><input type="checkbox" value="1" name="officer_notified" id="notified" onclick="<?php echo (is_null($request['date_notified'])) ? 'setNotifiedDate()' : ''; ?>" <?php echo ($request['officer_notified']==1 ? 'checked' : ''); ?>> Need To Notify Officer</label>
+				<label class = "checkbox-inline">Need To Notify Officer</label>
+				<?php if($request['date_notified'] == 1){ ?>
+					<input type="checkbox" name="officer_notified" id="notified" checked>
+				<?php }else{ ?>
+					<input type="checkbox" name="officer_notified" id="notified" onClick="setNotifiedDate()">
+				<?php } ?>
 				</br>
 				<label class="form-label pt-3">Date Notified:</label>
-                <?php if (is_null($request['date_notified'])) { ?>
-                    <input type="date" class="form-control" id="notified_date" name="date_notified" value="">
-                <?php } else { ?>
-                    <input type="date" class="form-control" id="notified_date" name="date_notified" value="<?php echo $request['date_notified']; ?>">
-                <?php }; ?>
+                <input type="date" class="form-control" id="notified_date" name="date_notified" value="<?php echo $request['date_notified']; ?>">
 			</div>
             <div class="col-md-1">
             </div>
