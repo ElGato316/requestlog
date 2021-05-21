@@ -98,11 +98,11 @@
 		<div class="row pt-3 p-3">
 			<div class="col col-md-5 form-check border border-primary rounded p-3">
 				<label class = "checkbox-inline">Need To Notify Officer</label>
-				<?php if($request['date_notified'] == 1){ ?>
-					<input type="checkbox" name="officer_notified" id="notified" checked>
-				<?php }else{ ?>
-					<input type="checkbox" name="officer_notified" id="notified" onClick="setNotifiedDate()">
-				<?php } ?>
+				<?php if($request['officer_notified'] == 0) {
+					echo '<input type="checkbox" name="officer_notified" id="notified" value="1" onClick="setNotifiedDate()">';
+				 }else{ 
+					echo '<input type="checkbox" name="officer_notified" id="notified" value="0" onClick="setNotifiedDate()" checked>';
+				} ?>
 				</br>
 				<label class="form-label pt-3">Date Notified:</label>
                 <input type="date" class="form-control" id="notified_date" name="date_notified" value="<?php echo $request['date_notified']; ?>">
