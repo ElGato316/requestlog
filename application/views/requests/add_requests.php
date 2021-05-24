@@ -50,18 +50,22 @@
                     <div class="form-group row">
                         <div class="col">
                             <label for="status" class="">Staus:</label>
-                            <select name="status" id="status">
+                            <select class="form-select" name="status" id="status_id" onChange="dateCompleted()">
                                 <option value="0">Set Status</option>
                                 <?php foreach($statuses as $status) : ?>
                                     <option value="<?php echo $status['id']; ?>" class="form-control"><?php echo $status['status']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div><!-- Status Field -->
-                        <div class="col form-group form-inline">
+                        <div class="col">
+                            <label for="date-completed" class="">Date Completed:</label>
+                            <input type="date" class="form-control" name="date_completed" id="completed_date">
+                        </div><!-- Date Completed Field -->
+                        <div class="col form-group form-inline ml-3 mt-3">
                             <label for="status" class="">Invoice Needed:</label>
                             <input type="checkbox" name="invoice_needed" value="1" class="form-control ml-3">
                         </div><!-- Invoice Check -->
-                        <div class="col form-group form-inline">
+                        <div class="col form-group form-inline mt-3">
                             <label for="status" class="block">Number of Videos:</label>
                             <input type="text" name="number_of_videos" id="" class="form-control ml-3" size="2">
                         </div><!--Number of Videos -->
@@ -104,6 +108,7 @@
                             <th scope="col">GovQA</th>
                             <th scope="col">Date Entered</th>
                             <th scope="col">Assigned To</th>
+                            <th scope="col">PD Case</th>
                         </thead>
                         <tbody id="last-request-entered-body"> 
                         <?php foreach($requests as $request): ?>
@@ -111,6 +116,7 @@
                                 <td><?php echo $request['govqa']; ?></td>
                                 <td><?php echo date("Y-m-d", strtotime($request['date_assigned'])); ?></td>
                                 <td><?php echo $request['name']; ?></td>
+                                <td><?php echo $request['pd_case']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

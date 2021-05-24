@@ -27,7 +27,7 @@
         }
 
         public function get_last_eight_request_entered(){
-            $sql = "select r.govqa, r.date_assigned, concat(u.lastname,\", \", u.firstname) as name
+            $sql = "select r.govqa, r.date_assigned, concat(u.lastname,\", \", u.firstname) as name, r.pd_case
                     from requests as r
                         join users as u on r.user_id = u.id
                     order by r.id desc 
@@ -43,7 +43,7 @@
                         left join status as s on r.status_id = s.id
                         left join agency as a on r.agency_id = a.id
                     where r.date_completed is null or r.date_completed = '0000-00-00'
-                    order by r.date_received;";
+                    order by r.date_received desc;";
             $query = $this->db->query($sql);
             return $query->result_array();
         }
@@ -89,7 +89,7 @@
 
             $data = array(
                 'date_received' => $this->input->post('date_received'),
-                'date_completed' => '0000-00-00',
+                'date_completed' => $this->input->post('date_completed'),
                 'govqa' => $this->input->post('govqa'),
                 'pd_case' => $this->input->post('pd_case'),
                 'agency_id' => $this->input->post('agency_id'),
