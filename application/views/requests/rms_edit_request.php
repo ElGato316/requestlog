@@ -24,7 +24,7 @@
 		</div>
 		<div class="row pt-3">
 			<div class="col">
-				<label class="form-label">PRS</label><br>
+				<label class="form-label">User</label><br>
 				<select class="form-select" name="user_id">
 				    <option selected="<?php echo $request['user_id']; ?>" value="<?php echo $request['user_id']; ?>"><?php echo $request['name']; ?></option>
                     <?php foreach($users as $user): ?>

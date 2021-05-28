@@ -38,9 +38,9 @@
                             <input type="text" class="form-control" name="agency_agent">
                         </div><!-- Agency Contact Field -->
                         <div class="col-4">
-                            <label for="prs" class="">PRS:</label><br />
+                            <label for="prs" class="">User:</label><br />
                             <select name="user_id" id="prs" style="width: 220px;">
-                                <option value="0">Select a PRS</option>
+                                <option value="0">Select a User</option>
                                 <?php foreach($users as $user) : ?>
                                     <option value="<?php echo $user['id']; ?>" class="form-control"><?php echo $user['name']; ?></option>
                                 <?php endforeach; ?>

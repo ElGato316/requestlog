@@ -21,7 +21,7 @@
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">Add Request</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view">All Open Requests</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search">Search Requests</a></li>
-                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search_user">Search Requests By PRS</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search_user">Search Requests By User</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search_by_status">Search Requests By Status</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view_pending_invoices">Requests Pending Invoice</a></li>
               </ul>

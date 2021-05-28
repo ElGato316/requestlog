@@ -36,7 +36,7 @@
                         <th scope="col">Agency</th>
                         <th scope="col">GovQA #</th>
                         <th scope="col">PD Case #</th>
-                        <th scope="col">PRS Assigned</th>
+                        <th scope="col">User Assigned</th>
                         <th scope="col">Status</th>
                         <th scope="col">Comments</th>
                     </thead>

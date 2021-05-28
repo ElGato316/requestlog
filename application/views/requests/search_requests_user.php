@@ -10,7 +10,7 @@
     <div class="col col-md-4">
         <label for="date-received" class="col-form-label">Search For:</label>
         <select class="form-select" name="input">
-            <option value="">Select A PRS:</option>
+            <option value="">Select A User:</option>
             <?php foreach($users as $user): ?>
             <option value="<?php echo $user['id']; ?>"><?php echo $user['name']; ?></option>
             <?php endforeach; ?>
@@ -36,7 +36,7 @@
                         <th scope="col">Agency</th>
                         <th scope="col">GovQA #</th>
                         <th scope="col">PD Case #</th>
-                        <th scope="col">PRS Assigned</th>
+                        <th scope="col">User Assigned</th>
                         <th scope="col">Status</th>
                         <th scope="col">Comments</th>
                     </thead>
