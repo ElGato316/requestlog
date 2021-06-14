@@ -1,5 +1,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3 mt-3 rounded">
-      <h4 class="text-white pr-3">Request Log</h4>
+      <div class="p-1 mr-2">
+        <img src="<?php echo base_url(); ?>assets/images/coin.png" alt="Request Log" width="60" height="60">
+      </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <?php if(!empty($_SESSION['logged_in'])): ?>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
