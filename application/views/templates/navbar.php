@@ -6,20 +6,20 @@
         <?php if(!empty($_SESSION['logged_in'])): ?>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" style="font-size:24px;" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Users
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:16px;">
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/add">Add User</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/view">All Users</a></li>
 
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" style="font-size:24px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Requests
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:16px;">
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/add">Add Request</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/view">All Open Requests</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>requests/search">Search Requests</a></li>
@@ -29,16 +29,16 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" style="font-size:24px;" href="<?php echo base_url(); ?>users/view" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Reports
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size:16px;">
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>reports/chiefs_weekly">Chief's Weekly</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>reports/prs_monthly">PRS Monthly</a></li>
               </ul>
             </li>
           </ul>
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto" style="font-size:24px;">
             <li class="nav-item text-white pr-3">Logged in as : <?php echo $_SESSION['firstname']." ".$_SESSION['lastname']; ?></li>
             <li class="nav-item"><a href="<?php echo base_url(); ?>login/logout" class="text-white">Logout</a></li>
           </ul>
