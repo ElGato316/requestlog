@@ -1,6 +1,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3 mt-3 rounded">
       <div class="p-1 mr-2">
-        <img src="<?php echo base_url(); ?>assets/images/coin.png" alt="Request Log" width="60" height="60">
+        <img src="<?php echo base_url(); ?>assets/images/coin.png" alt="Request Log" width="75" height="75">
       </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <?php if(!empty($_SESSION['logged_in'])): ?>
